@@ -5,17 +5,17 @@ import * as Styled from "./Header.styled"
 
 const headers: IHeader[] = [
     {
-        link: '/add',
+        link: '/react-ts-fields/add',
         name: 'Add',
         viewMode: AppViewMode.Add
     },
     {
-        link: '/edit',
+        link: '/react-ts-fields/edit',
         name: 'Edit',
         viewMode: AppViewMode.Edit
     },
     {
-        link: '/readonly',
+        link: '/react-ts-fields/readonly',
         name: 'Readonly',
         viewMode: AppViewMode.Readonly
     }

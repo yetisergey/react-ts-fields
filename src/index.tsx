@@ -14,10 +14,10 @@ root.render(
     <GlobalStyle />
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Navigate to="/add" />} />
-        <Route path='/add' element={<App viewMode={AppViewMode.Add} />} />
-        <Route path='/edit' element={<App viewMode={AppViewMode.Edit} />} />
-        <Route path='/readonly' element={<App viewMode={AppViewMode.Readonly} />} />
+        <Route path="/react-ts-fields" element={<Navigate to="/react-ts-fields/add" />} />
+        <Route path='/react-ts-fields/add' element={<App viewMode={AppViewMode.Add} />} />
+        <Route path='/react-ts-fields/edit' element={<App viewMode={AppViewMode.Edit} />} />
+        <Route path='/react-ts-fields/readonly' element={<App viewMode={AppViewMode.Readonly} />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
