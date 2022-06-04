@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/react-ts-fields/add/static/css/main.da8986fb.css",
-    "main.js": "/react-ts-fields/add/static/js/main.80430b3c.js",
+    "main.js": "/react-ts-fields/add/static/js/main.6fb7be76.js",
     "index.html": "/react-ts-fields/add/index.html",
     "main.da8986fb.css.map": "/react-ts-fields/add/static/css/main.da8986fb.css.map",
-    "main.80430b3c.js.map": "/react-ts-fields/add/static/js/main.80430b3c.js.map"
+    "main.6fb7be76.js.map": "/react-ts-fields/add/static/js/main.6fb7be76.js.map"
   },
   "entrypoints": [
     "static/css/main.da8986fb.css",
-    "static/js/main.80430b3c.js"
+    "static/js/main.6fb7be76.js"
   ]
 }
