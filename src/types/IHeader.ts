@@ -1,4 +1,4 @@
-import { AppViewMode } from "../../enums/AppViewMode";
+import { AppViewMode } from "../enums/AppViewMode";
 
 export interface IHeader
 {

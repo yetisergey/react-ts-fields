@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { IActiveProps } from "../../../types/IActiveProps"
+import { IActive } from "../../../types/IActive"
 
 export const MenuContainer = styled.div`
     flex: 0 0 auto;
@@ -26,7 +26,7 @@ export const MenuHeader = styled.div`
 export const MenuBlock = styled.div`
 `
 
-export const MenuButtonContainer = styled.div<IActiveProps>`
+export const MenuButtonContainer = styled.div<IActive>`
     border: 1px solid #e2e2e2;
     padding: 10px;
     display: flex;

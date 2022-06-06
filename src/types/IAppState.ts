@@ -1,4 +1,4 @@
-import { IFieldMetadata } from "../Field/IFieldMetadata";
+import { IFieldMetadata } from "./IFieldMetadata";
 
 export interface IAppState {
     fields: IFieldMetadata[];

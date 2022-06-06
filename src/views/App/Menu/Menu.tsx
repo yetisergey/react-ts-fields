@@ -12,8 +12,7 @@ import { Home, PhoneSquareAlt, Signature } from 'styled-icons/fa-solid';
 import { Time } from 'styled-icons/boxicons-regular';
 import { Survey } from 'styled-icons/remix-fill';
 import { FieldType } from "../../../enums/FieldType";
-import { IMenuProps } from "../../../types/Menu/IMenuProps";
-import { IMenuState } from "../../../types/Menu/IMenuState";
+import { IMenuState } from "../../../types/IMenuState";
 import { useEffect, useRef, useState } from "react";
 import debounce from 'lodash/debounce';
 
@@ -64,9 +63,11 @@ const defaultState: IMenuState = {
     ]
 };
 
-export const Menu = (props: IMenuProps) => {
-    const addField = props.addField;
+interface IMenuProps {
+    addField(type: FieldType): void
+}
 
+export const Menu: React.FC<IMenuProps> = ({ addField }) => {
     const [state, setState] = useState<IMenuState>({ ...defaultState })
 
     const searchBlocks = (searchValue: string) => {

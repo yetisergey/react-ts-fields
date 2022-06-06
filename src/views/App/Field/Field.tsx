@@ -4,13 +4,16 @@ import { TextAreaField } from "../../../components/TextAreaField";
 import { TextField } from "../../../components/TextField";
 import { FieldType } from "../../../enums/FieldType";
 import { FieldViewMode } from "../../../enums/FieldViewMode";
-import { IFieldProps } from "../../../types/Field/IFieldProps";
-import { IFieldState } from "../../../types/Field/IFieldState";
+import { IFieldState } from "../../../types/IFieldState";
 import * as Styled from "./Field.styled";
 import moment from 'moment';
 
-export const Field = (props: IFieldProps) => {
-    const { type, viewMode } = props;
+interface IFieldProps {
+    type: FieldType;
+    viewMode: FieldViewMode;
+}
+
+export const Field: React.FC<IFieldProps> = ({ type, viewMode }) => {
     const [state, setState] = useState<IFieldState>({ value: "" });
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement & HTMLTextAreaElement>) => {

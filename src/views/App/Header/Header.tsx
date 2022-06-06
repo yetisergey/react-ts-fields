@@ -1,29 +1,32 @@
 import { AppViewMode } from "../../../enums/AppViewMode";
-import { IHeader } from "../../../types/Header/IHeader";
-import { IHeaderProps } from "../../../types/Header/IHeaderProps";
+import { IHeader } from "../../../types/IHeader";
 import * as Styled from "./Header.styled"
 
 const headers: IHeader[] = [
     {
-        link: '/react-ts-fields/add',
+        link: '/add',
         name: 'Add',
         viewMode: AppViewMode.Add
     },
     {
-        link: '/react-ts-fields/edit',
+        link: '/edit',
         name: 'Edit',
         viewMode: AppViewMode.Edit
     },
     {
-        link: '/react-ts-fields/readonly',
+        link: '/readonly',
         name: 'Readonly',
         viewMode: AppViewMode.Readonly
     }
 ]
 
-export const Header = (props: IHeaderProps) => {
-    const isActive = (viewMode: AppViewMode): boolean =>
-        props.viewMode === viewMode;
+interface IHeaderProps {
+    viewMode: AppViewMode;
+}
+
+export const Header: React.FC<IHeaderProps> = ({ viewMode }) => {
+    const isActive = (appViewMode: AppViewMode): boolean =>
+        viewMode === appViewMode;
 
     return (
         <Styled.HeaderContainer>

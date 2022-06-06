@@ -4,13 +4,16 @@ import { appViewModeToFieldViewMode } from '../../mappers/ViewModeMapper';
 import * as Styled from './App.styled';
 import { Header } from './Header';
 import { Menu } from './Menu';
-import { IAppProps } from '../../types/App/IAppProps';
 import { useState } from 'react';
-import { IAppState } from '../../types/App/IAppState';
+import { IAppState } from '../../types/IAppState';
 import { FieldType } from '../../enums/FieldType';
+import { AppViewMode } from '../../enums/AppViewMode';
 
-export const App = (props: IAppProps) => {
-  const { viewMode } = props;
+interface IAppProps {
+  viewMode: AppViewMode;
+}
+
+export const App: React.FC<IAppProps> = ({ viewMode }) => {
   const [state, setState] = useState<IAppState>({ fields: [] });
 
   const addField = (type: FieldType) => {
