@@ -5,7 +5,7 @@ import { CalendarFill } from "styled-icons/bootstrap";
 
 type Props = {
     onChange(date: Date): void;
-    value: Date | undefined
+    value: Date | null
 }
 
 const DateTimeCustomInput = (props: React.ComponentPropsWithoutRef<"div">, ref: React.Ref<HTMLDivElement>) => {

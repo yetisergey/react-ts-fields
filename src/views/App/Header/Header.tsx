@@ -1,8 +1,8 @@
 import { AppViewMode } from "../../../enums/AppViewMode";
-import { IHeader } from "../../../types/IHeader";
+import { HeaderData } from "../../../types/HeaderData";
 import * as Styled from "./Header.styled"
 
-const headers: IHeader[] = [
+const headers: HeaderData[] = [
     {
         link: '/add',
         name: 'Add',

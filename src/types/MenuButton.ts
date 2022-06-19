@@ -1,7 +1,7 @@
 import { FieldType } from "../enums/FieldType";
 
-export type IMenuButton = {
+export type MenuButton = {
     icon: JSX.Element;
     name: string;
-    type?: FieldType | undefined;
+    type?: FieldType;
 }

@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { IActive } from "../../../types/IActive"
+import { Active } from "../../../types/Active"
 import { Link } from "react-router-dom";
 
 export const HeaderContainer = styled.header`
@@ -10,7 +10,7 @@ export const HeaderContainer = styled.header`
 	align-items: center;
     box-shadow: #00000033 0px 2px 4px -1px, #00000024 0px 4px 5px 0px, #0000001f 0px 1px 10px 0px;
 `
-export const HeaderButton = styled.div<IActive>`
+export const HeaderButton = styled.div<Active>`
     text-align: center;
     text-transform: uppercase;
     min-width: 100px;

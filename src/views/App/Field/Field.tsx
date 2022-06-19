@@ -13,13 +13,13 @@ type Props = {
 }
 
 export const Field: React.FC<Props> = ({ type, viewMode }) => {
-    const [textValue, setTextValue] = useState<string | undefined>("");
+    const [textValue, setTextValue] = useState<string>("");
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement & HTMLTextAreaElement>) => {
         const value = event.target.value;
         setTextValue(value);
     }
-    const handleChangeDatePicker = (value: Date | undefined) => {
+    const handleChangeDatePicker = (value?: Date) => {
         if (value) {
             const stringValue = moment(value).format('yyyy-MM-DD hh:mm a')
             setTextValue(stringValue);
@@ -53,11 +53,11 @@ export const Field: React.FC<Props> = ({ type, viewMode }) => {
             return (
                 <Styled.FieldContainer>
                     <Styled.Header>{type}</Styled.Header>
-                    <DateTimeField
+                    <DateTimeField 
                         value={
                             textValue ?
                                 moment(textValue, "yyyy-MM-DD hh:mm a").toDate() :
-                                undefined
+                                null
                         }
                         onChange={handleChangeDatePicker}
                     />

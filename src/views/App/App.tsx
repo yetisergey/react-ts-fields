@@ -7,14 +7,14 @@ import { Menu } from './Menu';
 import { useState } from 'react';
 import { FieldType } from '../../enums/FieldType';
 import { AppViewMode } from '../../enums/AppViewMode';
-import { IFieldMetadata } from '../../types/IFieldMetadata';
+import { FieldMetadata } from '../../types/FieldMetadata';
 
 type Props = {
   viewMode: AppViewMode;
 }
 
 export const App: React.FC<Props> = ({ viewMode }) => {
-  const [fields, setFields] = useState<IFieldMetadata[]>([]);
+  const [fields, setFields] = useState<FieldMetadata[]>([]);
 
   const addField = (type: FieldType) => {
     setFields([...fields, { type }])

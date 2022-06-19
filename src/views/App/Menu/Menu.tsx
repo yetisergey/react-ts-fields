@@ -14,9 +14,9 @@ import { Survey } from 'styled-icons/remix-fill';
 import { FieldType } from "../../../enums/FieldType";
 import { useEffect, useRef, useState } from "react";
 import debounce from 'lodash/debounce';
-import { IMenuBlock } from "../../../types/IMenuBlock";
+import { MenuBlock } from "../../../types/MenuBlock";
 
-const defaultBlocks: IMenuBlock[] = [
+const defaultBlocks: MenuBlock[] = [
     {
         active: true,
         header: "Basic",
@@ -66,7 +66,7 @@ type Props = {
 }
 
 export const Menu: React.FC<Props> = ({ addField }) => {
-    const [blocks, setBlocks] = useState<IMenuBlock[]>([...defaultBlocks])
+    const [blocks, setBlocks] = useState<MenuBlock[]>([...defaultBlocks])
 
     const searchBlocks = (searchValue: string) => {
         const value = searchValue;
@@ -129,7 +129,7 @@ export const Menu: React.FC<Props> = ({ addField }) => {
         ])
     }
 
-    const handleClickButton = (type: FieldType | undefined) => {
+    const handleClickButton = (type?: FieldType) => {
         if (!type) {
             return;
         }
