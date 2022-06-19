@@ -1,2 +1,2 @@
-import { TextAreaField } from './TextAreaField.styled'
-export { TextAreaField }
+import { TextAreaField } from "./TextAreaField.styled";
+export { TextAreaField };

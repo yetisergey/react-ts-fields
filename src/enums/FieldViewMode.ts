@@ -1,5 +1,4 @@
-export enum FieldViewMode 
-{ 
-    Normal,
-    ReadOnly
+export enum FieldViewMode {
+  Normal,
+  ReadOnly,
 }

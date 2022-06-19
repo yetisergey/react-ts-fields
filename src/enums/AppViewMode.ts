@@ -1,6 +1,5 @@
-export enum AppViewMode 
-{ 
-    Add,
-    Edit,
-    Readonly
+export enum AppViewMode {
+  Add,
+  Edit,
+  Readonly,
 }

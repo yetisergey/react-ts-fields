@@ -1,3 +1,3 @@
 export type Active = {
-    active: boolean;
-}
+  active: boolean;
+};
