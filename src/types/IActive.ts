@@ -1,3 +1,3 @@
-export interface IActive {
+export type IActive = {
     active: boolean;
 }

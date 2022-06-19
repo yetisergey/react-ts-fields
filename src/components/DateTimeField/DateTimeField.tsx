@@ -3,7 +3,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import React from "react";
 import { CalendarFill } from "styled-icons/bootstrap";
 
-interface IDateTimeFieldProps {
+type Props = {
     onChange(date: Date): void;
     value: Date | undefined
 }
@@ -21,7 +21,7 @@ const DateTimeCustomInput = (props: React.ComponentPropsWithoutRef<"div">, ref: 
     );
 };
 
-export const DateTimeField: React.FC<IDateTimeFieldProps> = ({ value, onChange }) => {
+export const DateTimeField: React.FC<Props> = ({ value, onChange }) => {
     return (
         <Styled.DateTimeFieldContainer
             dateFormat="yyyy-MM-dd hh:mm aa"

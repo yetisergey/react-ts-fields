@@ -1,6 +1,6 @@
 import { AppViewMode } from "../enums/AppViewMode";
 
-export interface IHeader
+export type IHeader =
 {
     link: string;
     name: string;

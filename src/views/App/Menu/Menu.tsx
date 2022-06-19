@@ -12,73 +12,71 @@ import { Home, PhoneSquareAlt, Signature } from 'styled-icons/fa-solid';
 import { Time } from 'styled-icons/boxicons-regular';
 import { Survey } from 'styled-icons/remix-fill';
 import { FieldType } from "../../../enums/FieldType";
-import { IMenuState } from "../../../types/IMenuState";
 import { useEffect, useRef, useState } from "react";
 import debounce from 'lodash/debounce';
+import { IMenuBlock } from "../../../types/IMenuBlock";
 
-const defaultState: IMenuState = {
-    menuBlocks: [
-        {
-            active: true,
-            header: "Basic",
-            buttons: [
-                {
-                    icon: <Textarea />,
-                    name: "Text field",
-                    type: FieldType.TextField
-                },
-                {
-                    icon: <TextareaResize />,
-                    name: "Text area",
-                    type: FieldType.TextArea
-                }
-            ]
-        },
-        {
-            active: false,
-            header: "Advanced",
-            buttons: [
-                { icon: <At />, name: "Email" },
-                { icon: <Link45deg />, name: "Url" },
-                { icon: <PhoneSquareAlt />, name: "Phone Number" },
-                { icon: <TagsFill />, name: "Tags" },
-                { icon: <Home />, name: "Address" },
-                { icon: <Calendar />, name: "Date / time", type: FieldType.DateTime },
-                { icon: <Calendar />, name: "Day" },
-                { icon: <Time />, name: "Time" },
-                { icon: <CurrencyDollar />, name: "Currency" },
-                { icon: <Survey />, name: "Survey" },
-                { icon: <Signature />, name: "Signature" }
-            ]
-        },
-        {
-            active: false, header: "Layout", buttons: []
-        },
-        {
-            active: false, header: "Data", buttons: []
-        },
-        {
-            active: false, header: "Premium", buttons: []
-        }
-    ]
-};
+const defaultBlocks: IMenuBlock[] = [
+    {
+        active: true,
+        header: "Basic",
+        buttons: [
+            {
+                icon: <Textarea />,
+                name: "Text field",
+                type: FieldType.TextField
+            },
+            {
+                icon: <TextareaResize />,
+                name: "Text area",
+                type: FieldType.TextArea
+            }
+        ]
+    },
+    {
+        active: false,
+        header: "Advanced",
+        buttons: [
+            { icon: <At />, name: "Email" },
+            { icon: <Link45deg />, name: "Url" },
+            { icon: <PhoneSquareAlt />, name: "Phone Number" },
+            { icon: <TagsFill />, name: "Tags" },
+            { icon: <Home />, name: "Address" },
+            { icon: <Calendar />, name: "Date / time", type: FieldType.DateTime },
+            { icon: <Calendar />, name: "Day" },
+            { icon: <Time />, name: "Time" },
+            { icon: <CurrencyDollar />, name: "Currency" },
+            { icon: <Survey />, name: "Survey" },
+            { icon: <Signature />, name: "Signature" }
+        ]
+    },
+    {
+        active: false, header: "Layout", buttons: []
+    },
+    {
+        active: false, header: "Data", buttons: []
+    },
+    {
+        active: false, header: "Premium", buttons: []
+    }
+]
 
-interface IMenuProps {
+type Props = {
     addField(type: FieldType): void
 }
 
-export const Menu: React.FC<IMenuProps> = ({ addField }) => {
-    const [state, setState] = useState<IMenuState>({ ...defaultState })
+export const Menu: React.FC<Props> = ({ addField }) => {
+    const [blocks, setBlocks] = useState<IMenuBlock[]>([...defaultBlocks])
 
     const searchBlocks = (searchValue: string) => {
         const value = searchValue;
 
         if (value === "") {
-            setState({ ...defaultState })
+            setBlocks([...defaultBlocks])
             return;
         }
 
-        const filteredBlocks = state.menuBlocks
+        const filteredBlocks = blocks
             .filter(block => {
                 const findButtons = block.buttons
                     .filter(button =>
@@ -104,10 +102,7 @@ export const Menu: React.FC<IMenuProps> = ({ addField }) => {
                 }
             });
 
-        setState({
-            ...state,
-            menuBlocks: filteredBlocks
-        })
+        setBlocks([...filteredBlocks])
     }
 
     const debouncedSearch = useRef(
@@ -127,14 +122,11 @@ export const Menu: React.FC<IMenuProps> = ({ addField }) => {
     }
 
     const handleClickHeader = (menuBlockNum: number, active: boolean) => {
-        setState({
-            ...state,
-            menuBlocks: [
-                ...state.menuBlocks.slice(0, menuBlockNum),
-                { ...state.menuBlocks[menuBlockNum], active: active },
-                ...state.menuBlocks.slice(menuBlockNum + 1),
-            ],
-        })
+        setBlocks([
+            ...blocks.slice(0, menuBlockNum),
+            { ...blocks[menuBlockNum], active: active },
+            ...blocks.slice(menuBlockNum + 1),
+        ])
     }
 
     const handleClickButton = (type: FieldType | undefined) => {
@@ -149,27 +141,25 @@ export const Menu: React.FC<IMenuProps> = ({ addField }) => {
             <Styled.MenuSearch placeholder='Search field(s)' onChange={handleChangeSearch}>
             </Styled.MenuSearch>
             {
-                state.menuBlocks &&
-                state.menuBlocks
-                    .map((block, menuBlockNum) =>
-                    (
-                        <Styled.MenuBlock key={menuBlockNum}>
-                            <Styled.MenuHeader onClick={_ => handleClickHeader(menuBlockNum, !block.active)}>
-                                {block.header}
-                            </Styled.MenuHeader>
-                            <Styled.MenuButtonContainer active={block.active}>
-                                {block.buttons &&
-                                    block.buttons.map((button, buttonNum) =>
-                                    (
-                                        <Styled.MenuButton key={buttonNum}
-                                            onClick={_ => handleClickButton(button.type)}>
-                                            {button.icon}
-                                            {button.name}
-                                        </Styled.MenuButton>
-                                    ))}
-                            </Styled.MenuButtonContainer>
-                        </Styled.MenuBlock>
-                    ))
+                blocks.map((block, menuBlockNum) =>
+                (
+                    <Styled.MenuBlock key={menuBlockNum}>
+                        <Styled.MenuHeader onClick={_ => handleClickHeader(menuBlockNum, !block.active)}>
+                            {block.header}
+                        </Styled.MenuHeader>
+                        <Styled.MenuButtonContainer active={block.active}>
+                            {block.buttons &&
+                                block.buttons.map((button, buttonNum) =>
+                                (
+                                    <Styled.MenuButton key={buttonNum}
+                                        onClick={_ => handleClickButton(button.type)}>
+                                        {button.icon}
+                                        {button.name}
+                                    </Styled.MenuButton>
+                                ))}
+                        </Styled.MenuButtonContainer>
+                    </Styled.MenuBlock>
+                ))
             }
         </Styled.MenuContainer>
     )

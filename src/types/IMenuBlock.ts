@@ -1,6 +1,6 @@
 import { IMenuButton } from "./IMenuButton";
 
-export interface IMenuBlock {
+export type IMenuBlock = {
     active: boolean;
     header: string;
     buttons: IMenuButton[];

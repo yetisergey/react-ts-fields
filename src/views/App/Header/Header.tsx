@@ -20,11 +20,11 @@ const headers: IHeader[] = [
     }
 ]
 
-interface IHeaderProps {
+type Props = {
     viewMode: AppViewMode;
 }
 
-export const Header: React.FC<IHeaderProps> = ({ viewMode }) => {
+export const Header: React.FC<Props> = ({ viewMode }) => {
     const isActive = (appViewMode: AppViewMode): boolean =>
         viewMode === appViewMode;
 

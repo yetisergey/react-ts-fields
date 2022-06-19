@@ -4,34 +4,32 @@ import { TextAreaField } from "../../../components/TextAreaField";
 import { TextField } from "../../../components/TextField";
 import { FieldType } from "../../../enums/FieldType";
 import { FieldViewMode } from "../../../enums/FieldViewMode";
-import { IFieldState } from "../../../types/IFieldState";
 import * as Styled from "./Field.styled";
 import moment from 'moment';
 
-interface IFieldProps {
+type Props = {
     type: FieldType;
     viewMode: FieldViewMode;
 }
 
-export const Field: React.FC<IFieldProps> = ({ type, viewMode }) => {
-    const [state, setState] = useState<IFieldState>({ value: "" });
+export const Field: React.FC<Props> = ({ type, viewMode }) => {
+    const [textValue, setTextValue] = useState<string | undefined>("");
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement & HTMLTextAreaElement>) => {
         const value = event.target.value;
-        setState({ ...state, value: value });
+        setTextValue(value);
     }
     const handleChangeDatePicker = (value: Date | undefined) => {
         if (value) {
             const stringValue = moment(value).format('yyyy-MM-DD hh:mm a')
-            setState({ ...state, value: stringValue });
-        } else { }
-
+            setTextValue(stringValue);
+        }
     }
 
     if (viewMode === FieldViewMode.ReadOnly) {
         return (
             <Styled.FieldContainer>
-                <Styled.Header>{type}: {state.value}</Styled.Header>
+                <Styled.Header>{type}: {textValue}</Styled.Header>
             </Styled.FieldContainer>
         )
     }
@@ -41,14 +39,14 @@ export const Field: React.FC<IFieldProps> = ({ type, viewMode }) => {
             return (
                 <Styled.FieldContainer>
                     <Styled.Header>{type}</Styled.Header>
-                    <TextField value={state.value} onChange={handleChange} ></TextField>
+                    <TextField value={textValue} onChange={handleChange} ></TextField>
                 </Styled.FieldContainer>
             );
         case FieldType.TextArea:
             return (
                 <Styled.FieldContainer>
                     <Styled.Header>{type}</Styled.Header>
-                    <TextAreaField value={state.value} onChange={handleChange} ></TextAreaField>
+                    <TextAreaField value={textValue} onChange={handleChange} ></TextAreaField>
                 </Styled.FieldContainer>
             );
         case FieldType.DateTime:
@@ -57,8 +55,8 @@ export const Field: React.FC<IFieldProps> = ({ type, viewMode }) => {
                     <Styled.Header>{type}</Styled.Header>
                     <DateTimeField
                         value={
-                            state.value ?
-                                moment(state.value, "yyyy-MM-DD hh:mm a").toDate() :
+                            textValue ?
+                                moment(textValue, "yyyy-MM-DD hh:mm a").toDate() :
                                 undefined
                         }
                         onChange={handleChangeDatePicker}

@@ -1,6 +1,6 @@
 import { FieldType } from "../enums/FieldType";
 
-export interface IMenuButton {
+export type IMenuButton = {
     icon: JSX.Element;
     name: string;
     type?: FieldType | undefined;

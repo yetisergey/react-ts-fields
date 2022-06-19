@@ -1,5 +1,5 @@
 import { FieldType } from "../enums/FieldType";
 
-export interface IFieldMetadata {
+export type IFieldMetadata = {
     type: FieldType;
 }
